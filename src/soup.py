@@ -32,8 +32,8 @@ class Soup(BeautifulSoup):
         table = [t.get_text() for t in table]
         upc = table[0]
         product_type = table[1]
-        product_incl_tax = float(table[2].removeprefix("Â£"))
-        product_excl_tax = float(table[3].removeprefix("Â£"))
+        price_incl_tax = float(table[2].removeprefix("Â£"))
+        price_excl_tax = float(table[3].removeprefix("Â£"))
         tax = float(table[3].removeprefix("Â£"))
         total_reviews = int(table[-1])
         img_url = self.find("img")["src"].replace("../../", BASE_URL)
@@ -45,8 +45,8 @@ class Soup(BeautifulSoup):
             description=description,
             upc=upc,
             product_type=product_type,
-            price_incl_tax=product_incl_tax,
-            price_excl_tax=product_excl_tax,
+            price_incl_tax=price_incl_tax,
+            price_excl_tax=price_excl_tax,
             tax=tax,
             total_reviews=total_reviews,
             img_url=img_url,
